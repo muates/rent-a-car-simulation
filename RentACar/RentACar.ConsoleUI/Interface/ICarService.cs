@@ -1,4 +1,5 @@
 ﻿using RentACar.ConsoleUI.Model;
+using RentACar.ConsoleUI.Model.Dto;
 
 namespace RentACar.ConsoleUI.Interface;
 
@@ -9,4 +10,6 @@ public interface ICarService
     void Delete(int id);
     Car GetById(int id);
     List<Car> GetAll();
+    CarDetailDto GetCarDetailById(int id);
+    List<CarDetailDto> GetAllCarDetails();
 }

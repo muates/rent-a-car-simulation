@@ -19,11 +19,9 @@ internal class Program
         try
         {
             var carService = serviceFactory.GetService<ICarService>();
-            var colorService = serviceFactory.GetService<IColorService>();
-            var fuelService = serviceFactory.GetService<IFuelService>();
-            var transmissionService = serviceFactory.GetService<ITransmissionService>();
 
-            carService.Update(1, 80000, 12000);
+            var result = carService.GetAllCarDetails();
+            result.ForEach(car => Console.WriteLine(car));
         }
         catch (ArgumentException e)
         {
