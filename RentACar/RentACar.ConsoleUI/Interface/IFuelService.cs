@@ -9,4 +9,5 @@ public interface IFuelService
     void Delete(int id);
     Fuel GetById(int id);
     List<Fuel> GetAll();
+    Fuel? GetFuelByName(string name);
 }

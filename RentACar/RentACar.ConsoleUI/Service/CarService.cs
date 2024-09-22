@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic.FileIO;
 using RentACar.ConsoleUI.Interface;
 using RentACar.ConsoleUI.Model;
 using RentACar.ConsoleUI.Model.Dto;
@@ -89,6 +90,25 @@ public class CarService : ICarService
 
             return ConvertToCarDetailDto(car, fuel, transmission, color);
         }).ToList();
+    }
+
+    public List<CarDetailDto> GetAllDetailsByFuelName(string name)
+    {
+        var fuel = _fuelService.GetFuelByName(name);
+
+        if (fuel is not null)
+        {
+            return _carRepository.GetAll()
+                .Where(car => car.FuelId == fuel.Id)
+                .Select(car =>
+                {
+                    var transmission = _transmissionService.GetById(car.TransmissionId);
+                    var color = _colorService.GetById(car.ColorId);
+                    return ConvertToCarDetailDto(car, fuel, transmission, color);
+                }).ToList();
+        }
+
+        return new List<CarDetailDto>();
     }
 
     private CarDetailDto ConvertToCarDetailDto(Car car, Fuel fuel, Transmission transmission, Color color)

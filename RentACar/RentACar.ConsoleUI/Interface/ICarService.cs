@@ -12,4 +12,5 @@ public interface ICarService
     List<Car> GetAll();
     CarDetailDto GetCarDetailById(int id);
     List<CarDetailDto> GetAllCarDetails();
+    List<CarDetailDto> GetAllDetailsByFuelName(string name);
 }

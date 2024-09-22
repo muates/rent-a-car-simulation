@@ -51,4 +51,10 @@ public class FuelService : IFuelService
 
         _fuelRepository.Update(fuel);
     }
+
+    public Fuel? GetFuelByName(string name)
+    {
+        return _fuelRepository.GetAll()
+            .FirstOrDefault(fuel => string.Equals(fuel.Name, name, StringComparison.InvariantCultureIgnoreCase));
+    }
 }

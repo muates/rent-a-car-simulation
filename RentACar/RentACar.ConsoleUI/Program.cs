@@ -20,8 +20,9 @@ internal class Program
         {
             var carService = serviceFactory.GetService<ICarService>();
 
-            var result = carService.GetAllCarDetails();
-            result.ForEach(car => Console.WriteLine(car));
+            var result = carService.GetAllDetailsByFuelName("Hybrid");
+
+            result.ForEach(car => Console.WriteLine(car + "\n"));
         }
         catch (ArgumentException e)
         {
